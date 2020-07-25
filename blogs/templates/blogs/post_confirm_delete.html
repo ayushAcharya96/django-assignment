@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+    <div>
+        <h1>Deleting a Blog Post</h1>
+        <hr>
+        <form action="" method="post">
+            {% csrf_token %}
+{#            {{ form|crispy }}#}
+            <h2>Are you sure you want to delete the post <br>"{{ object.title }}"?</h2>
+            <div class="form-group">
+                <br><br>
+                <input type="submit" class="btn btn-lg btn-outline-danger form-control" value="Delete Post">
+                <br><br>
+                <a href="{% url 'blogs:post-detail' object.slug %}" class="btn btn-lg btn-outline-secondary form-control">Cancel</a>
+            </div>
+        </form>
+
+    </div>
+
+{% endblock %}

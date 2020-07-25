@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+        <div class="post-card">
+
+            <div class="media">
+                <img src="{{ object.author.profile.image.url }}" alt="" class="rounded-circle account-img" width="50" height="50">
+                <div class="media-body">
+                    <h2>{{ object.title }}</h2>
+                    <p>By: {{ object.author }} | {{ object.created_on|date:"F d, Y" }}</p>
+                    {% if object.author == user %}
+                        <a href="{% url 'blogs:post-update' object.slug %}" class="btn btn-secondary btn-sm mt-1 mb-1">Update</a>
+                        <a href="{% url 'blogs:post-delete' object.slug %}" class="btn btn-danger btn-sm mt-1 mb-1">Delete</a>
+                    {% endif %}
+                    <hr>
+                    <p class="blog-content">{{ object.content }}</p>
+{#                    <a class="btn btn-primary btn-lg" href="#">Read More &raquo;</a>#}
+                </div>
+            </div>
+
+        </div>
+
+
+{%  endblock content %}
